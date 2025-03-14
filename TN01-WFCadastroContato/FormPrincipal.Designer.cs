@@ -34,13 +34,14 @@
             mnsSobre = new ToolStripMenuItem();
             mnsSair = new ToolStripMenuItem();
             picMenu = new PictureBox();
+            mnsListagem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picMenu).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { mnsCadastrar, mnsSobre, mnsSair });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { mnsCadastrar, mnsSobre, mnsListagem, mnsSair });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(573, 24);
@@ -79,6 +80,13 @@
             picMenu.TabIndex = 1;
             picMenu.TabStop = false;
             // 
+            // mnsListagem
+            // 
+            mnsListagem.Name = "mnsListagem";
+            mnsListagem.Size = new Size(67, 20);
+            mnsListagem.Text = "Listagem";
+            mnsListagem.Click += mnsListagem_Click;
+            // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -107,5 +115,6 @@
         private ToolStripMenuItem mnsSobre;
         private ToolStripMenuItem mnsSair;
         private PictureBox picMenu;
+        private ToolStripMenuItem mnsListagem;
     }
 }

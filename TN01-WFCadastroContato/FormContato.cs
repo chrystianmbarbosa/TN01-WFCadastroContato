@@ -27,9 +27,20 @@ namespace TN01_WFCadastroContato
             MessageBox.Show(mensagem, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        public void LimparFormulario()
+        {
+            txtNome.Clear();
+            txtSobrenome.Clear();
+            txtEmail.Clear();
+            mtbDddTelefone.Clear();
+            rdbComercial.Checked = false;
+            rdbPessoal.Checked = false;
+            rdbRecado.Checked = false;
+        }
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            //Jeito 2 (Mantendo as máscaras do maskedTextBox)
+            //Não usei o Exclude Prompt Literals
             string semMaskTelefone = mtbDddTelefone.Text
                 .Replace("(", "")
                 .Replace(")", "")
@@ -61,7 +72,7 @@ namespace TN01_WFCadastroContato
                 return;
             }
 
-            string tipoTelefone = "";
+            ETipoTelefone tipoTelefone;
             //Se todos os radios estão desmarcados
             if (!rdbComercial.Checked && !rdbPessoal.Checked && !rdbRecado.Checked)
             {
@@ -71,28 +82,45 @@ namespace TN01_WFCadastroContato
             else
             {
                 if (rdbComercial.Checked)
-                    tipoTelefone = "Comercial";
+                    tipoTelefone = ETipoTelefone.Comercial;
                 else if (rdbPessoal.Checked)
-                    tipoTelefone = "Pessoal";
+                    tipoTelefone = ETipoTelefone.Pessoal;
                 else
-                    tipoTelefone = "Recado";
+                    tipoTelefone = ETipoTelefone.Recado;
             }
-            //Jeito 1 (Retirando as máscaras do maskedTextBox)
-            //string dddTelefone =
-            //    "(" + mtbDddTelefone.Text.Substring(0, 2) + ") "
-            //    + mtbDddTelefone.Text.Substring(2, 5) + "-"
-            //    + mtbDddTelefone.Text.Substring(7);
 
+            Contato c1 = new Contato();
+            c1.Codigo = 0;
+            c1.Nome = txtNome.Text;
+            c1.Sobrenome = txtSobrenome.Text;
+            c1.Email = txtEmail.Text;
+            c1.TipoTelefone = tipoTelefone;
+
+            // Usou a Propriedade (Exclude Prompt Literals)
+            //1 1 9 8 7 6 5 4 3 2 1  //Caracteres
+            //0 1 2 3 4 5 6 7 8 9 10 //Index(posição)
+
+            c1.Ddd = mtbDddTelefone.Text.Substring(0, 2);
+            c1.Telefone = mtbDddTelefone.Text.Substring(2);
+
+            // Não Usou a Propriedade (Exclude Prompt Literals)
+            // E limpou os caracteres com o .Replace()
+            //1 1 9 8 7 6 5 4 3 2 1  //Caracteres
+            //0 1 2 3 4 5 6 7 8 9 10 //Index(posição)
+            c1.Ddd = semMaskTelefone.Substring(0, 2);
+            c1.Telefone = semMaskTelefone.Substring(2);
+
+            Contato.ListaContatos.Add(c1);
             
-            string mensagem = @$"
-                    Nome Completo: {txtNome.Text} {txtSobrenome.Text}
-                    Tipo Telefone: {tipoTelefone}
-                    DDD/Telefone: {mtbDddTelefone.Text}
-                    Email: {txtEmail.Text}
-                    ";
+            Sucesso("Cadastrado com Sucesso!");
 
-            Sucesso(mensagem);
+            LimparFormulario();
 
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
