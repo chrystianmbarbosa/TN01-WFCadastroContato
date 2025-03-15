@@ -49,6 +49,11 @@ namespace WFAcesso
             MessageBox.Show("Usuario Não Autenticado!",
                             "Erro!", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
+            
+
+            txtLogin.Clear();
+            txtSenha.Clear();
+            
             return;
         }
 
