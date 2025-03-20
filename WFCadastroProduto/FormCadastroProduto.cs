@@ -34,7 +34,8 @@ namespace WFCadastroProduto
 
         private void FormCadastroProduto_Load(object sender, EventArgs e)
         {
-            mtbCodigo.Text = "00" + Produto.ObterLista().Count + 1;
+            int totalLista = Produto.ObterLista().Count + 1;
+            mtbCodigo.Text = totalLista.ToString("D4");
             dtpDataVencimento.Value = DateTime.Today;
         }
 
@@ -122,7 +123,7 @@ namespace WFCadastroProduto
 
             LimparCampos();
             int totalLista = Produto.ObterLista().Count + 1;
-            mtbCodigo.Text = "000" + totalLista;
+            mtbCodigo.Text = totalLista.ToString("D4");
 
 
         }
