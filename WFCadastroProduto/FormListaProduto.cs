@@ -16,5 +16,10 @@ namespace WFCadastroProduto
         {
             InitializeComponent();
         }
+
+        private void FormListaProduto_Load(object sender, EventArgs e)
+        {
+            dgvListaProdutos.DataSource = Produto.ObterLista();
+        }
     }
 }

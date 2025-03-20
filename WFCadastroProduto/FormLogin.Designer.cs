@@ -41,6 +41,7 @@
             btnAcessar.TabIndex = 5;
             btnAcessar.Text = "Acessar";
             btnAcessar.UseVisualStyleBackColor = true;
+            btnAcessar.Click += btnAcessar_Click;
             // 
             // txtSenha
             // 
@@ -50,6 +51,7 @@
             txtSenha.PlaceholderText = "Digite a sua senha...";
             txtSenha.Size = new Size(181, 23);
             txtSenha.TabIndex = 4;
+            txtSenha.KeyDown += txtSenha_KeyDown;
             // 
             // txtLogin
             // 
@@ -73,6 +75,7 @@
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Formulário de Acesso";
+            Load += FormLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

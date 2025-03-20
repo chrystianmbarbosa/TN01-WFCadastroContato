@@ -56,6 +56,7 @@
             // 
             // mtbCodigo
             // 
+            mtbCodigo.Enabled = false;
             mtbCodigo.Location = new Point(36, 45);
             mtbCodigo.Mask = "0000";
             mtbCodigo.Name = "mtbCodigo";
@@ -161,6 +162,7 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // FormCadastroProduto
             // 
@@ -186,6 +188,7 @@
             Name = "FormCadastroProduto";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Produto";
+            Load += FormCadastroProduto_Load;
             ((System.ComponentModel.ISupportInitialize)nudPreco).EndInit();
             ResumeLayout(false);
             PerformLayout();
