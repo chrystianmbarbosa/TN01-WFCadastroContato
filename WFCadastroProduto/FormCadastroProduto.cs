@@ -79,7 +79,41 @@ namespace WFCadastroProduto
             prod.Nome = txtNomeProduto.Text;
             prod.Preco = Convert.ToDouble(nudPreco.Value);
             prod.DataVencimento = dtpDataVencimento.Value;
-            prod.Categoria = cbxCategoria.SelectedItem!.ToString();
+
+            switch (cbxCategoria.SelectedItem?.ToString())
+            {
+                case "Açougue":
+                    prod.Categoria = ECategoria.Açougue;
+                    break;
+                case "Hortifruti":
+                    prod.Categoria = ECategoria.Hortifruti;
+                    break;
+                case "Eletrônicos":
+                    prod.Categoria = ECategoria.Eletrônicos;
+                    break;
+                case "Limpeza":
+                    prod.Categoria = ECategoria.Limpeza;
+                    break;
+                case "Padaria":
+                    prod.Categoria = ECategoria.Padaria;
+                    break;
+                case "Frios":
+                    prod.Categoria = ECategoria.Frios;
+                    break;
+                case "Laticínios":
+                    prod.Categoria = ECategoria.Laticínios;
+                    break;
+                case "Peixaria":
+                    prod.Categoria = ECategoria.Peixaria;
+                    break;
+                case "Cesta Básica":
+                    prod.Categoria = ECategoria.CestaBasica;
+                    break;
+                default:
+                    prod.Categoria = ECategoria.Outros;
+                    break;
+            }
+
             prod.Observacao = rtbObservacao.Text;
 
             prod.Cadastrar();

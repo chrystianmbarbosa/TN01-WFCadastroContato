@@ -77,7 +77,7 @@
             // 
             cbxCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxCategoria.FormattingEnabled = true;
-            cbxCategoria.Items.AddRange(new object[] { "Açougue", "Hortaliças", "Eletrônicos", "Limpeza", "Padaria", "Frios", "Laticínios", "Peixaria", "Cesta Básica" });
+            cbxCategoria.Items.AddRange(new object[] { "Açougue", "Hortifruti", "Eletrônicos", "Limpeza", "Padaria", "Frios", "Laticínios", "Peixaria", "Cesta Básica" });
             cbxCategoria.Location = new Point(142, 47);
             cbxCategoria.Name = "cbxCategoria";
             cbxCategoria.Size = new Size(168, 23);
